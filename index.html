@@ -5,24 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SolarScan</title>
     <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#4A6B46">
+    <meta name="theme-color" content="#4A6B46">
 
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Solar Scan AI">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Solar Scan AI">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
 
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+
+        body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(180deg,#FFFDF6,#F5F8F7);
+    margin:0;
+    padding:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+h1,h2{
+    font-family:'Poppins',sans-serif;
+}
 
         .phone-container {
             width: 375px;
@@ -57,21 +63,24 @@
             background: white;
         }
 
-        .primary-btn {
-            background: #4A6B46;
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 12px;
+        .primary-btn{
+            width:100%;
+            padding:16px;
+            border:none;
+            border-radius:14px;
+            background:linear-gradient(135deg,#FFC83D,#F4B400);
+            color:#222;
+            font-size:16px;
+            font-weight:700;
+            cursor:pointer;
+            transition:.3s;
+            box-shadow:0 10px 25px rgba(255,193,7,.35);
+            margin-top:12px;
         }
 
-        .primary-btn:hover {
-            background: #3a5436;
+        .primary-btn:hover{
+            transform:translateY(-2px);
+            box-shadow:0 15px 30px rgba(255,193,7,.45);
         }
 
         .outline-danger-btn {
@@ -614,44 +623,6 @@
             display: block;
         }
 
-        .connection-card {
-            background: white;
-            border-radius: 18px;
-            padding: 16px;
-            border: 1px solid #eee;
-            margin-bottom: 14px;
-        }
-
-        .connection-card h4 {
-            margin: 0 0 6px 0;
-            font-size: 16px;
-        }
-
-        .connection-card p {
-            margin: 0;
-            font-size: 12px;
-            color: #777;
-        }
-
-        .connection-status {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: bold;
-        }
-
-        .connected {
-            background: #e9f7ef;
-            color: #1f7a45;
-        }
-
-        .not-connected {
-            background: #fff0f0;
-            color: #c94b4b;
-        }
-
         .bottom-nav {
             position: absolute;
             bottom: 0;
@@ -677,41 +648,178 @@
             cursor: pointer;
         }
 
+        .nav-item svg {
+            margin-bottom: 4px;
+            stroke: #888888;
+        }
+
         .nav-item.active-nav {
             color: #4A6B46;
         }
-
-        .nav-item i {
-            font-size: 22px;
-            margin-bottom: 4px;
-            font-style: normal;
+        
+        .nav-item.active-nav svg {
+            stroke: #4A6B46;
         }
 
         .nav-item span {
             font-size: 10px;
             font-weight: 500;
         }
-    </style>
+    
+.auth-card{
+    background:white;
+    padding:30px;
+    border-radius:24px;
+    box-shadow:0 18px 45px rgba(0,0,0,.08);
+    border:1px solid #ECECEC;
+    animation:fadeUp .7s ease;
+}
+
+.auth-header{
+    margin-bottom:35px;
+}
+.auth-header h1{
+    font-size:40px;
+    font-weight:800;
+    color:#1E293B;
+    margin:0 0 8px;
+}
+.auth-header p{
+    color:#64748B;
+    font-size:16px;
+}
+.logo-circle{
+    width:70px;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:20px;
+    background:linear-gradient(135deg,#FFD54F,#F4B400);
+    font-size:34px;
+    margin-bottom:20px;
+    box-shadow:0 12px 30px rgba(255,193,7,.30);
+}
+.switch-auth{
+    text-align:center;
+    margin-top:20px;
+    color:#64748B;
+}
+.switch-auth span{
+    color:#F4B400;
+    font-weight:700;
+    cursor:pointer;
+}
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+</style>
 </head>
 
 <body>
     <div class="phone-container">
+<!-- LOGIN SCREEN -->
+<div id="login-screen" class="screen active">
 
-        <!-- LOGIN SCREEN -->
-        <div id="login-screen" class="screen active">
-            <div class="login-logo">☀️</div>
-            <div class="login-title">solarScan</div>
-            <div class="login-subtitle">Intelligent array monitoring.</div>
+    <div class="auth-header">
+        <div class="logo-circle">☀️</div>
 
-            <input type="email" class="form-control" placeholder="Email Address" value="admin@utp.edu.my" />
-            <input type="password" class="form-control" placeholder="Password" value="password" />
+        <h1>Welcome Back</h1>
 
-            <button class="primary-btn" onclick="login()">Sign In</button>
+        <p>Monitor your solar panels anywhere.</p>
+    </div>
 
-            <p class="signup-text">
-                Don't have an account? <b onclick="alert('Sign up page can be added later.')">Sign up</b>
-            </p>
+    <div class="auth-card">
+
+        <h2>Sign In</h2>
+
+        <input
+            id="login-email"
+            type="email"
+            class="form-control"
+            placeholder="Email"
+            value="admin@utp.edu.my">
+
+        <input
+            id="login-password"
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            value="password">
+
+        <button class="primary-btn" onclick="login()">
+            Sign In
+        </button>
+
+        <div class="switch-auth">
+            Don't have an account?
+            <span onclick="showSignup()">Sign Up</span>
         </div>
+
+    </div>
+
+</div>
+
+<!-- SIGN UP SCREEN -->
+<div id="signup-screen" class="screen">
+
+    <div class="auth-header">
+
+        <div class="logo-circle">☀️</div>
+
+        <h1>Create Account</h1>
+
+        <p>Start monitoring your solar panels.</p>
+
+    </div>
+
+    <div class="auth-card">
+
+        <h2>Sign Up</h2>
+
+        <input
+            id="signup-name"
+            type="text"
+            class="form-control"
+            placeholder="Full Name">
+
+        <input
+            id="signup-email"
+            type="email"
+            class="form-control"
+            placeholder="Email">
+
+        <input
+            id="signup-password"
+            type="password"
+            class="form-control"
+            placeholder="Password">
+
+        <button
+            class="primary-btn"
+            onclick="registerUser()">
+
+            Sign Up
+
+        </button>
+
+        <div class="switch-auth">
+
+            Already have an account?
+
+            <span onclick="showLogin()">
+
+                Sign In
+
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
 
         <!-- DASHBOARD SCREEN -->
         <div id="dashboard-screen" class="screen">
@@ -725,14 +833,14 @@
 
             <div class="efficiency-card">
                 <div>Total System Efficiency</div>
-                <div class="eff-value">94%</div>
+                <div class="eff-value" id="system-efficiency-val">94%</div>
                 <div style="font-size:12px;">All 12 strings active</div>
             </div>
 
             <div class="stats-row">
                 <div class="stat-box">
                     <div class="label">Total Output</div>
-                    <div class="val">450 kWh</div>
+                    <div class="val" id="system-output-val">450 kWh</div>
                 </div>
 
                 <div class="stat-box">
@@ -867,7 +975,7 @@
             <div class="summary-grid">
                 <div class="summary-box">
                     <div class="summary-label">Avg. Efficiency</div>
-                    <div class="summary-value">94%</div>
+                    <div class="summary-value" id="summary-avg-eff">94%</div>
                     <div class="summary-note">+2.1% from last week</div>
                 </div>
 
@@ -886,7 +994,7 @@
                     <p id="weather-condition">Loading weather...</p>
                 </div>
 
-                <div class="weather-icon">🌤️</div>
+                <div class="weather-icon" id="weather-emoji">🌤️</div>
             </div>
 
             <div class="weather-grid">
@@ -928,10 +1036,10 @@
                 <div class="setting-item" onclick="showScreen('subscription-screen', 'nav-profile')">
                     <div class="setting-text">
                         <div>
-                            Subscribe Monthly
-                            <span class="monthly-badge">MONTHLY</span>
+                            solarScan PRO
+                            <span class="monthly-badge" style="background:#d4af37;">UPGRADE</span>
                         </div>
-                        <small>RMxx/month for SolarScan access</small>
+                        <small>View subscription plans</small>
                     </div>
                     <div class="arrow">›</div>
                 </div>
@@ -948,14 +1056,6 @@
             <div class="section-title">System</div>
 
             <div class="setting-group">
-                <div class="setting-item" onclick="showScreen('hardware-screen', 'nav-profile')">
-                    <div class="setting-text">
-                        <div>Hardware Connections</div>
-                        <small>Manage API and device integration</small>
-                    </div>
-                    <div class="arrow">›</div>
-                </div>
-
                 <div class="setting-item" onclick="alert('Notification preferences page can be added later.')">
                     <div class="setting-text">
                         <div>Notification Preferences</div>
@@ -972,31 +1072,57 @@
         <div id="subscription-screen" class="screen" style="background:white;">
             <div class="inner-header">
                 <span class="back-btn" onclick="showScreen('profile-screen', 'nav-profile')">‹</span>
-                <h2 style="margin:0;">Subscribe Monthly</h2>
+                <h2 style="margin:0;">Select a Plan</h2>
                 <span style="width:24px;"></span>
             </div>
 
-            <p style="color:#666; font-size:14px; text-align:center; margin-bottom:24px;">
-                One simple monthly plan for intelligent solar array monitoring.
+            <p style="color:#666; font-size:14px; text-align:center; margin-bottom:20px;">
+                Unlock intelligent solar array monitoring.
             </p>
 
-            <div class="subscription-card">
-                <span class="subscription-badge">MONTHLY PLAN</span>
-
-                <div class="tier-title">solarScan ACCESS</div>
-
-                <div class="tier-price">
-                    RM xx<span>/month</span>
-                </div>
-
+            <!-- Features apply to all plans -->
+            <div style="margin-bottom: 24px; padding: 0 10px;">
                 <div class="tier-feature">✓ Continuous AI camera scanning</div>
                 <div class="tier-feature">✓ Solar panel dirt detection</div>
                 <div class="tier-feature">✓ Automated maintenance alerts</div>
-                <div class="tier-feature">✓ Unlimited system history</div>
                 <div class="tier-feature">✓ Monthly performance reports</div>
+            </div>
 
-                <button class="primary-btn" onclick="subscribeMonthly()">
-                    Subscribe Monthly
+            <!-- 1 MONTH PLAN -->
+            <div class="subscription-card" style="padding: 18px; margin-top: 12px;">
+                <div class="tier-title">1 MONTH</div>
+                <div class="tier-price" style="margin: 10px 0;">RM xx</div>
+                <button class="outline-danger-btn" style="color:#4A6B46; border-color:#4A6B46; padding:12px; margin-top:0;" onclick="subscribePlan('1 Month')">
+                    Select Plan
+                </button>
+            </div>
+
+            <!-- 3 MONTHS PLAN -->
+            <div class="subscription-card" style="padding: 18px; margin-top: 16px;">
+                <div class="tier-title">3 MONTHS</div>
+                <div class="tier-price" style="margin: 10px 0;">RM xx</div>
+                <button class="outline-danger-btn" style="color:#4A6B46; border-color:#4A6B46; padding:12px; margin-top:0;" onclick="subscribePlan('3 Months')">
+                    Select Plan
+                </button>
+            </div>
+
+            <!-- 6 MONTHS PLAN -->
+            <div class="subscription-card" style="padding: 18px; margin-top: 16px;">
+                <span class="subscription-badge">POPULAR</span>
+                <div class="tier-title">6 MONTHS</div>
+                <div class="tier-price" style="margin: 10px 0;">RM xx</div>
+                <button class="primary-btn" style="padding:12px; margin-top:0;" onclick="subscribePlan('6 Months')">
+                    Select Plan
+                </button>
+            </div>
+
+            <!-- 1 YEAR PLAN -->
+            <div class="subscription-card" style="padding: 18px; margin-top: 16px; margin-bottom: 30px;">
+                <span class="subscription-badge" style="background: linear-gradient(135deg, #111, #333);">BEST VALUE</span>
+                <div class="tier-title">1 YEAR</div>
+                <div class="tier-price" style="margin: 10px 0;">RM xx</div>
+                <button class="primary-btn" style="padding:12px; margin-top:0;" onclick="subscribePlan('1 Year')">
+                    Select Plan
                 </button>
             </div>
         </div>
@@ -1018,56 +1144,21 @@
             <button class="primary-btn" onclick="saveProfile()">Save Changes</button>
         </div>
 
-        <!-- HARDWARE CONNECTIONS SCREEN -->
-        <div id="hardware-screen" class="screen" style="background:white;">
-            <div class="inner-header">
-                <span class="back-btn" onclick="showScreen('profile-screen', 'nav-profile')">‹</span>
-                <h2 style="margin:0;">Hardware</h2>
-                <span style="width:24px;"></span>
-            </div>
-
-            <p style="color:#666; font-size:14px; margin-bottom:18px;">
-                Connect SolarScan with real devices and APIs.
-            </p>
-
-            <div class="connection-card">
-                <h4>Solar Inverter API</h4>
-                <p>Reads output, voltage, energy generation and inverter status.</p>
-                <span class="connection-status connected">Connected</span>
-            </div>
-
-            <div class="connection-card">
-                <h4>AI Camera Module</h4>
-                <p>Scans solar panels and detects dirt level using image analysis.</p>
-                <span class="connection-status connected">Connected</span>
-            </div>
-
-            <div class="connection-card">
-                <h4>Weather API</h4>
-                <p>Gets temperature, rainfall and sunlight condition for analysis.</p>
-                <span class="connection-status connected">Connected</span>
-            </div>
-
-            <div class="connection-card">
-                <h4>IoT Sensor Gateway</h4>
-                <p>Connects dust, light intensity, voltage and current sensors.</p>
-                <span class="connection-status not-connected">Not Connected</span>
-            </div>
-
-            <button class="primary-btn" onclick="alert('Demo connection successful!')">
-                Test Connection
-            </button>
-        </div>
-
         <!-- BOTTOM NAVIGATION -->
         <div id="main-nav" class="bottom-nav">
             <div id="nav-home" class="nav-item active-nav" onclick="showDashboard()">
-                <i>🏠</i>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
                 <span>Home</span>
             </div>
 
             <div id="nav-profile" class="nav-item" onclick="showScreen('profile-screen', 'nav-profile')">
-                <i>⚙️</i>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
                 <span>Profile</span>
             </div>
         </div>
@@ -1082,168 +1173,171 @@
 
         function getInitials(name) {
             const words = name.trim().split(" ");
-
             if (words.length === 1) {
                 return words[0].substring(0, 2).toUpperCase();
             }
-
             return (words[0][0] + words[1][0]).toUpperCase();
         }
 
         function updateProfileUI() {
-            document.querySelectorAll(".user-name").forEach(item => {
-                item.textContent = currentUser.name;
-            });
-
-            document.querySelectorAll(".user-email").forEach(item => {
-                item.textContent = currentUser.email;
-            });
-
-            document.querySelectorAll(".user-initials").forEach(item => {
-                item.textContent = getInitials(currentUser.name);
-            });
-
-            document.querySelectorAll(".dashboard-user-name").forEach(item => {
-                item.textContent = currentUser.name;
-            });
-        }
-
-        function getWeatherDescription(code) {
-            const weatherCodes = {
-                0: "Clear sky",
-                1: "Mainly clear",
-                2: "Partly cloudy",
-                3: "Overcast",
-                45: "Foggy",
-                48: "Depositing rime fog",
-                51: "Light drizzle",
-                53: "Moderate drizzle",
-                55: "Dense drizzle",
-                61: "Slight rain",
-                63: "Moderate rain",
-                65: "Heavy rain",
-                80: "Light rain showers",
-                81: "Moderate rain showers",
-                82: "Heavy rain showers",
-                95: "Thunderstorm"
-            };
-
-            return weatherCodes[code] || "Weather unavailable";
-        }
-
-        async function loadOpenMeteoWeather() {
-            const latitude = 4.3857;
-            const longitude = 100.9792;
-
-            const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,precipitation,cloud_cover,weather_code&hourly=shortwave_radiation&timezone=Asia%2FSingapore`;
-
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-
-                const current = data.current;
-
-                let solarRadiation = "--";
-                if (data.hourly && data.hourly.time && data.hourly.shortwave_radiation) {
-                    const currentHour = current.time ? current.time.slice(0, 13) : "";
-                    let index = data.hourly.time.findIndex(time => time.slice(0, 13) === currentHour);
-
-                    if (index === -1) {
-                        index = 0;
-                    }
-
-                    solarRadiation = data.hourly.shortwave_radiation[index];
-                }
-
-                document.getElementById("weather-temp").textContent = `${current.temperature_2m}°C`;
-                document.getElementById("weather-condition").textContent = getWeatherDescription(current.weather_code);
-                document.getElementById("weather-cloud").textContent = `${current.cloud_cover}%`;
-                document.getElementById("weather-rain").textContent = `${current.precipitation} mm`;
-                document.getElementById("weather-solar").textContent = `${solarRadiation} W/m²`;
-            } catch (error) {
-                document.getElementById("weather-condition").textContent = "Weather API failed to load.";
-                console.error("Open-Meteo Error:", error);
-            }
+            const initials = getInitials(currentUser.name);
+            document.querySelectorAll('.user-initials').forEach(el => el.textContent = initials);
+            document.querySelectorAll('.dashboard-user-name, .user-name').forEach(el => el.textContent = currentUser.name);
+            document.querySelectorAll('.user-email').forEach(el => el.textContent = currentUser.email);
         }
 
         function showScreen(screenId, navId) {
-            document.querySelectorAll(".screen").forEach(screen => {
-                screen.classList.remove("active");
-            });
-
-            document.getElementById(screenId).classList.add("active");
-
-            const nav = document.getElementById("main-nav");
-
-            if (screenId === "login-screen") {
-                nav.classList.remove("active");
-            } else {
-                nav.classList.add("active");
-            }
-
-            document.querySelectorAll(".nav-item").forEach(item => {
-                item.classList.remove("active-nav");
-            });
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
 
             if (navId) {
-                document.getElementById(navId).classList.add("active-nav");
+                document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active-nav'));
+                document.getElementById(navId).classList.add('active-nav');
             }
         }
 
         function showDashboard() {
-            showScreen("dashboard-screen", "nav-home");
-            loadOpenMeteoWeather();
+            showScreen('dashboard-screen', 'nav-home');
         }
 
         function login() {
+            document.getElementById('main-nav').classList.add('active');
+            updateProfileUI();
             showDashboard();
+            fetchLiveWeatherData(); // Fetch live weather on login
         }
 
         function logout() {
-            showScreen("login-screen", null);
+            document.getElementById('main-nav').classList.remove('active');
+            showScreen('login-screen', null);
         }
 
         function openEditProfile() {
-            document.getElementById("edit-name").value = currentUser.name;
-            document.getElementById("edit-email").value = currentUser.email;
-
-            showScreen("edit-profile-screen", "nav-profile");
+            document.getElementById('edit-name').value = currentUser.name;
+            document.getElementById('edit-email').value = currentUser.email;
+            showScreen('edit-profile-screen');
         }
 
         function saveProfile() {
-            const newName = document.getElementById("edit-name").value.trim();
-            const newEmail = document.getElementById("edit-email").value.trim();
+            currentUser.name = document.getElementById('edit-name').value;
+            currentUser.email = document.getElementById('edit-email').value;
+            updateProfileUI();
+            showScreen('profile-screen', 'nav-profile');
+        }
 
-            if (newName === "" || newEmail === "") {
-                alert("Please fill in both name and email.");
+        function subscribePlan(planName) {
+            alert(`You selected the ${planName} plan! Payment functionality coming soon.`);
+        }
+
+        // ==========================================
+        // OPEN-METEO LIVE API INTEGRATION (Perak, MY)
+        // ==========================================
+        async function fetchLiveWeatherData() {
+            // Latitude and Longitude for Seri Iskandar / Perak (near UTP)
+            const lat = 4.360;
+            const lon = 100.985;
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,cloud_cover,rain&timezone=Asia%2FKuala_Lumpur`;
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error("Weather API failed");
+                
+                const data = await response.json();
+                const current = data.current;
+
+                // 1. Update Temperature
+                document.getElementById('weather-temp').textContent = `${Math.round(current.temperature_2m)}°C`;
+
+                // 2. Map Weather Code and update emoji
+                const weatherMap = {
+                    0: { text: "Clear sky", emoji: "☀️" },
+                    1: { text: "Mainly clear", emoji: "🌤️" },
+                    2: { text: "Partly cloudy", emoji: "⛅" },
+                    3: { text: "Overcast", emoji: "☁️" },
+                    61: { text: "Light rain", emoji: "🌧️" },
+                    63: { text: "Moderate rain", emoji: "🌧️" },
+                    65: { text: "Heavy rain", emoji: "⛈️" },
+                    80: { text: "Rain showers", emoji: "🌦️" },
+                    95: { text: "Thunderstorm", emoji: "🌩️" }
+                };
+
+                const weatherInfo = weatherMap[current.weather_code] || { text: "Cloudy", emoji: "⛅" };
+                document.getElementById('weather-condition').textContent = weatherInfo.text;
+                document.getElementById('weather-emoji').textContent = weatherInfo.emoji;
+
+                // 3. Update Cloud Cover and Rain
+                document.getElementById('weather-cloud').textContent = `${current.cloud_cover}%`;
+                document.getElementById('weather-rain').textContent = `${current.rain} mm`;
+
+                // 4. Calculate Estimated Solar Radiation based on Cloud Cover
+                // (High clouds = lower solar radiation)
+                const estimatedSolar = Math.round(800 - (current.cloud_cover * 6.5));
+                document.getElementById('weather-solar').textContent = `${estimatedSolar < 100 ? 100 : estimatedSolar} W/m²`;
+
+                // 5. SMART SIMULATION: Dynamically adjust app performance based on cloud cover!
+                // If it's cloudy outside, the app dynamically scales efficiency.
+                const simulatedEfficiency = Math.round(98 - (current.cloud_cover * 0.4));
+                const simulatedOutput = Math.round(480 * (simulatedEfficiency / 100));
+
+                document.getElementById('system-efficiency-val').textContent = `${simulatedEfficiency}%`;
+                document.getElementById('summary-avg-eff').textContent = `${simulatedEfficiency}%`;
+                document.getElementById('system-output-val').textContent = `${simulatedOutput} kWh`;
+
+            } catch (error) {
+                console.error("Error fetching weather API:", error);
+                document.getElementById('weather-condition').textContent = "Connection offline";
+            }
+        }
+
+        
+        function showSignup(){
+            document.getElementById('login-screen').classList.remove('active');
+            document.getElementById('signup-screen').classList.add('active');
+        }
+
+        function showLogin(){
+            document.getElementById('signup-screen').classList.remove('active');
+            document.getElementById('login-screen').classList.add('active');
+        }
+
+        function registerUser(){
+            const email=document.getElementById('signup-email').value.trim();
+            const password=document.getElementById('signup-password').value.trim();
+
+            if(!email || !password){
+                alert('Please enter your email and password.');
                 return;
             }
 
-            currentUser.name = newName;
-            currentUser.email = newEmail;
+            localStorage.setItem('solarUser',JSON.stringify({email,password}));
 
+            currentUser.email=email;
             updateProfileUI();
-            showScreen("profile-screen", "nav-profile");
+
+            alert('Account created successfully!');
+            showLogin();
         }
 
-        function subscribeMonthly() {
-            alert("Monthly subscription selected. Payment gateway can be connected here.");
-        }
+        const oldLogin = login;
+        login = function(){
+            const saved = JSON.parse(localStorage.getItem('solarUser') || 'null');
+            const email=document.getElementById('login-email').value.trim();
+            const password=document.getElementById('login-password').value.trim();
 
+            if(saved){
+                if(saved.email!==email || saved.password!==password){
+                    alert('Invalid email or password.');
+                    return;
+                }
+                currentUser.email=saved.email;
+            }
+            oldLogin();
+        };
+
+
+        // Initialize UI on load
         updateProfileUI();
+        fetchLiveWeatherData();
     </script>
-    <script>
-    if ("serviceWorker" in navigator) {
-        window.addEventListener("load", function () {
-            navigator.serviceWorker.register("service-worker.js")
-                .then(function () {
-                    console.log("PWA ready.");
-                })
-                .catch(function (error) {
-                    console.log("PWA failed:", error);
-                });
-        });
-    }
-</script>
 </body>
 </html>
